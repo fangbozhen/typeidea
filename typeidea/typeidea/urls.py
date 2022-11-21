@@ -18,6 +18,7 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.sitemaps import views as sitemap_views
+import xadmin
 
 from blog.views import (
     IndexView, CategoryView, TagView,
@@ -42,7 +43,7 @@ urlpatterns = [
     url(r'^rss|feed/', LatestPostFeed(), name='rss'),
     url(r'^sitemap\.xml', sitemap_views.sitemap, {'sitemaps': {'posts': PostSitemap}}),
     url(r'^super_admin/', admin.site.urls, name='super-admin'),
-    url(r'^admin/', custom_site.urls, name='admin'),
+    url(r'^admin/', xadmin.site.urls, name='xadmin'),
     url(r'^category-autocomplete/$', CategoryAutocomplete.as_view(),
         name='category-autocomplete'),
     url(r'^tag-autocomplete/$', TageAutocomplete.as_view(),

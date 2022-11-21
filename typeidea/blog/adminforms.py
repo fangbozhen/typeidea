@@ -29,7 +29,7 @@ class PostAdminForm(forms.ModelForm):
         )
 
     def __init__(self, instance=None, initial=None, **kwargs):
-        initial = initial or { }
+        initial = initial or {}
         if instance:
             if instance.is_md:
                 initial['content_md'] = instance.content
@@ -49,7 +49,7 @@ class PostAdminForm(forms.ModelForm):
             self.add_error(content_field_name, '必填项！')
             return
         self.cleaned_data['content'] = content
-        return super().clear()
+        return super().clean()
 
     class Media:
         js = ('js/post_editor.js', )
